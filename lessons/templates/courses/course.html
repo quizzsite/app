@@ -1,0 +1,12 @@
+<div class="left-side">
+    {% for lesson in course.lessons %}
+        <div class="minicard">
+            <div class="card-title">
+                {{ lesson.name }}
+            </div>
+            <div class="minitext">
+                {{ tasks | length }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

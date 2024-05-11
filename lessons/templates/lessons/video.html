@@ -1,0 +1,30 @@
+<!-- course_video.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Video</title>
+</head>
+<body>
+    <h1>Course Video</h1>
+    <video id="videoPlayer" controls autoplay></video>
+    
+    <script>
+        const videoPlayer = document.getElementById('videoPlayer');
+        const streamKey = "{{ stream_key }}";
+        const rtmpServer = "{{ rtmp_server }}";
+
+        // Подключение к RTMP серверу для получения потока
+        if (flvjs.isSupported()) {
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: rtmpServer + '/' + streamKey
+            });
+            flvPlayer.attachMediaElement(videoPlayer);
+            flvPlayer.load();
+            flvPlayer.play();
+        }
+    </script>
+</body>
+</html>
